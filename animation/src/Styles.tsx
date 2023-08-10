@@ -77,7 +77,7 @@ export const Overlay = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: rgba(0, 0, 0, 0.7); */
 `;
 
 export const PopupCard = styled(motion.div)`
@@ -86,3 +86,15 @@ export const PopupCard = styled(motion.div)`
     background-color: whitesmoke;
     border-radius: 5px;
 `;
+
+export const OverlayVariants = {
+    start: {
+        backgroundColor: "rgba(0, 0, 0, 0.0)",
+    },
+    end: {
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+    },
+    erxit: {
+        backgroundColor: "rgba(0, 0, 0, 0.0)",
+    },
+};
