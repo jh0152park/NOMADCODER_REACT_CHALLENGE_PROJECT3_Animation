@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Box, Circle, Container, Grid, Switch } from "./Styles";
 
 function App() {
+    const [flip, setFlip] = useState<boolean>(false);
     const [switchActive, setSwitchActive] = useState<boolean>(false);
 
     function handleMouseDown() {
         console.log("handleMouseDown");
         setSwitchActive(true);
+        setFlip((prev) => !prev);
     }
 
     function handleMouseUp() {
@@ -18,10 +20,8 @@ function App() {
         <Container>
             <Grid>
                 <Box></Box>
-                <Box>
-                    <Circle layoutId="dot"></Circle>
-                </Box>
-                <Box></Box>
+                <Box>{!flip ? <Circle layoutId="dot"></Circle> : null}</Box>
+                <Box>{flip ? <Circle layoutId="dot"></Circle> : null}</Box>
                 <Box></Box>
             </Grid>
             <Switch
