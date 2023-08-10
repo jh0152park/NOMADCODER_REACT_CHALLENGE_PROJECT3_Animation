@@ -5,6 +5,7 @@ import {
     Container,
     Grid,
     Overlay,
+    OverlayVariants,
     PopupCard,
     Switch,
 } from "./Styles";
@@ -57,7 +58,16 @@ function App() {
 
             <AnimatePresence>
                 {popup && id ? (
-                    <Overlay onClick={handleOverlayClick}>
+                    <Overlay
+                        onClick={handleOverlayClick}
+                        variants={OverlayVariants}
+                        initial="start"
+                        animate="end"
+                        exit="exit"
+                        transition={{
+                            duration: 1,
+                        }}
+                    >
                         <PopupCard layoutId={id + ""}></PopupCard>
                     </Overlay>
                 ) : null}
