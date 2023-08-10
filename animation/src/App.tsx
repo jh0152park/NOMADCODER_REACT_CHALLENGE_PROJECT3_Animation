@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Box,
     Circle,
@@ -16,6 +16,8 @@ function App() {
     const [flip, setFlip] = useState<boolean>(false);
     const [popup, setPopup] = useState<boolean>(false);
     const [switchActive, setSwitchActive] = useState<boolean>(false);
+
+    const [dummy, setDummy] = useState<any>(null);
 
     function handleMouseDown() {
         console.log("handleMouseDown");
@@ -40,14 +42,29 @@ function App() {
         setId(0);
     }
 
+    useEffect(() => {
+        setDummy({});
+        console.log("render");
+        console.log("popup value: " + popup);
+    }, [popup]);
+
     return (
         <Container>
-            <Grid>
-                <Box onClick={() => handleBoxClick(1)} layoutId="1"></Box>
+            <Grid isPopup={popup}>
+                <Box
+                    style={{ originX: 1, originY: 1 }}
+                    onClick={() => handleBoxClick(1)}
+                    layoutId="1"
+                ></Box>
                 <Box>{!flip ? <Circle layoutId="dot"></Circle> : null}</Box>
                 <Box>{flip ? <Circle layoutId="dot"></Circle> : null}</Box>
-                <Box onClick={() => handleBoxClick(4)} layoutId="4"></Box>
+                <Box
+                    style={{ originX: 0, originY: 0 }}
+                    onClick={() => handleBoxClick(4)}
+                    layoutId="4"
+                ></Box>
             </Grid>
+
             <Switch
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
