@@ -10,7 +10,7 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 
-export const Grid = styled.div`
+export const Grid = styled(motion.div)`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 50%;
@@ -77,5 +77,12 @@ export const Overlay = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(154, 205, 50, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
+`;
+
+export const PopupCard = styled(motion.div)`
+    width: 250px;
+    height: 200px;
+    background-color: whitesmoke;
+    border-radius: 5px;
 `;
