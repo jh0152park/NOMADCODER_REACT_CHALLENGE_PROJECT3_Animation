@@ -69,3 +69,13 @@ export const Circle = styled(motion.div)`
     border-radius: 50%;
     background-color: whitesmoke;
 `;
+
+export const Overlay = styled(motion.div)`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(154, 205, 50, 0.7);
+`;
