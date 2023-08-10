@@ -10,7 +10,7 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 
-export const Grid = styled(motion.div)<{ isPopup: boolean }>`
+export const Grid = styled(motion.div)`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 50vw;
