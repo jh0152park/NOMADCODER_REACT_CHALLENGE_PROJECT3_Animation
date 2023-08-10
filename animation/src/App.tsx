@@ -42,15 +42,9 @@ function App() {
         setId(0);
     }
 
-    useEffect(() => {
-        setDummy({});
-        console.log("render");
-        console.log("popup value: " + popup);
-    }, [popup]);
-
     return (
         <Container>
-            <Grid isPopup={popup}>
+            <Grid>
                 <Box
                     style={{ originX: 1, originY: 1 }}
                     onClick={() => handleBoxClick(1)}
