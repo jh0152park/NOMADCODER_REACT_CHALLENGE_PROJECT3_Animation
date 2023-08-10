@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { Box, Circle, Container, Grid, Overlay, Switch } from "./Styles";
+import {
+    Box,
+    Circle,
+    Container,
+    Grid,
+    Overlay,
+    PopupCard,
+    Switch,
+} from "./Styles";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
+    const [id, setId] = useState<number>(0);
     const [flip, setFlip] = useState<boolean>(false);
     const [popup, setPopup] = useState<boolean>(false);
     const [switchActive, setSwitchActive] = useState<boolean>(false);
@@ -18,27 +27,25 @@ function App() {
         setSwitchActive(false);
     }
 
-    function handleBoxClick() {
+    function handleBoxClick(index: number) {
         console.log("handleBoxClick");
         setPopup(true);
+        setId(index);
     }
 
     function handleOverlayClick() {
         console.log("handleOverlayClick");
         setPopup(false);
+        setId(0);
     }
 
     return (
         <Container>
             <Grid>
-                <Box id="1" onClick={handleBoxClick}></Box>
-                <Box id="2">
-                    {!flip ? <Circle layoutId="dot"></Circle> : null}
-                </Box>
-                <Box id="3">
-                    {flip ? <Circle layoutId="dot"></Circle> : null}
-                </Box>
-                <Box id="4" onClick={handleBoxClick}></Box>
+                <Box onClick={() => handleBoxClick(1)} layoutId="1"></Box>
+                <Box>{!flip ? <Circle layoutId="dot"></Circle> : null}</Box>
+                <Box>{flip ? <Circle layoutId="dot"></Circle> : null}</Box>
+                <Box onClick={() => handleBoxClick(4)} layoutId="4"></Box>
             </Grid>
             <Switch
                 onMouseDown={handleMouseDown}
@@ -49,8 +56,10 @@ function App() {
             </Switch>
 
             <AnimatePresence>
-                {popup ? (
-                    <Overlay onClick={handleOverlayClick}></Overlay>
+                {popup && id ? (
+                    <Overlay onClick={handleOverlayClick}>
+                        <PopupCard layoutId={id + ""}></PopupCard>
+                    </Overlay>
                 ) : null}
             </AnimatePresence>
         </Container>
